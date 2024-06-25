@@ -8,7 +8,6 @@ import dev.sentix.squaremarker.command.SquaremarkerCommand
 import dev.sentix.squaremarker.marker.Marker
 import dev.sentix.squaremarker.marker.MarkerService
 import org.incendo.cloud.context.CommandContext
-import org.incendo.cloud.description.Description
 import org.incendo.cloud.minecraft.extras.RichDescription.richDescription
 import org.incendo.cloud.parser.standard.StringParser.greedyStringParser
 import xyz.jpenilla.squaremap.api.Key
@@ -28,9 +27,13 @@ class SetatMarkerCommand(plugin: SquareMarker, commands: Commands) :
             builder.literal("setat", "at")
                 .required(
                     "dimension e.g minecraft:overworld> <x> <z> <Marker Name> <[+ optional url for icon]",
-                    greedyStringParser()
+                    greedyStringParser(),
                 )
-                .commandDescription(richDescription(Components.parse("Set a marker in a given dimension, for a given x, z coordinate, with optional name and icon url")))
+                .commandDescription(
+                    richDescription(
+                        Components.parse("Set a marker in a given dimension, for a given x, z coordinate, with optional name and icon url"),
+                    ),
+                )
                 .permission("squaremarker.set")
                 .handler(::execute)
         }
