@@ -28,10 +28,9 @@ class SetatMarkerCommand(plugin: SquareMarker, commands: Commands) :
             builder.literal("setat", "at")
                 .required(
                     "dimension e.g minecraft:overworld> <x> <z> <Marker Name> <[+ optional url for icon]",
-                    greedyStringParser(),
-                    Description.description("Set a marker in a given dimension, for a given x, z coordinate"),
+                    greedyStringParser()
                 )
-                .commandDescription(richDescription(Components.parse("Set a marker at at a given (optional dimension,) x and z position.")))
+                .commandDescription(richDescription(Components.parse("Set a marker in a given dimension, for a given x, z coordinate, with optional name and icon url")))
                 .permission("squaremarker.set")
                 .handler(::execute)
         }
